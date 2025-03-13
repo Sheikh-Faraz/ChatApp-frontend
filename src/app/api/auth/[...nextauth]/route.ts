@@ -7,7 +7,8 @@ import NextAuth from 'next-auth/next';
 import GoogleProvider from 'next-auth/providers/google';
 
 // This file is used for authentication
-export const authOptions: NextAuthOptions = {
+const authOptions: NextAuthOptions = {
+// export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma) as Adapter,
   providers: [
     GoogleProvider({
