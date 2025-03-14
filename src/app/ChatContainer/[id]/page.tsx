@@ -7,7 +7,8 @@ import ChatBackground from '@/app/assets/ChatBG.png';
 
 // To get session
 import { getServerSession } from 'next-auth';
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+// import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { authOptions } from '@/lib/auth';
 import { redirect } from 'next/navigation';
 
 // Gets the ID of the user cliked to chat with from the url params

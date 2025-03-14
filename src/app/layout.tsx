@@ -13,7 +13,7 @@ import { ToastContainer } from "react-toastify";
 
 // THIS IS THE PROVIDER FROM OR FOR JATOI
 import { Provider } from 'jotai';
-import MobileLayout from './Drawer-Sidebar/MobileLayout';
+// import MobileLayout from './Drawer-Sidebar/MobileLayout';
 
 const inter = Inter({ subsets: ['latin'] });
 

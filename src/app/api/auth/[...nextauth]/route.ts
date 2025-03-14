@@ -5,24 +5,26 @@ import { NextAuthOptions } from 'next-auth';
 import { Adapter } from 'next-auth/adapters';
 import NextAuth from 'next-auth/next';
 import GoogleProvider from 'next-auth/providers/google';
+import { authOptions } from '@/lib/auth';
 
 // This file is used for authentication
 
-export const authOptions: NextAuthOptions = {
-  adapter: PrismaAdapter(prisma) as Adapter,
-  providers: [
-    GoogleProvider({
-      clientId: env.GOOGLE_CLIENT_ID,
-      clientSecret: env.GOOGLE_CLIENT_SECRET,
-    }),
-  ],
-  callbacks: {
-    session({ session, user }) {
-      session.user.id = user.id;
-      return session;
-    },
-  },
-};
+// export const authOptions: NextAuthOptions = {
+//   adapter: PrismaAdapter(prisma) as Adapter,
+//   providers: [
+//     GoogleProvider({
+//       clientId: env.GOOGLE_CLIENT_ID,
+//       clientSecret: env.GOOGLE_CLIENT_SECRET,
+//     }),
+//   ],
+//   callbacks: {
+//     session({ session, user }) {
+//       session.user.id = user.id;
+//       return session;
+//     },
+//   },
+// };
 
+// const handler = NextAuth(authOptions);  
 const handler = NextAuth(authOptions);  
 export { handler as GET, handler as POST }
