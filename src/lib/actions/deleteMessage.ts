@@ -1,7 +1,7 @@
 'use server';
 import prisma from '@/lib/db/prisma';
 export async function deleteMessage(
-  id: string,
+  // id: string,
   secondaryId: string
 ) {
   await prisma.chatMessage.deleteMany({

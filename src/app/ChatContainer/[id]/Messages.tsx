@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { useRef, useEffect, useState } from 'react';
 import { deleteMessage } from '@/lib/actions/deleteMessage';
 import DeleteButton from '@/components/DeleteButton';
+import { Trash2 } from 'lucide-react';
 // Using socket to get messages in instant
 import { io } from 'socket.io-client';
 
@@ -19,7 +20,7 @@ interface MessageProps {
   chat: Chat[];
   contact: any;
   // TO GET THE SESSION
-  session: any;
+  session: any; 
 }
 
 export default function MessageContain({
@@ -77,12 +78,15 @@ export default function MessageContain({
       socket.disconnect();
     };
   }, [receiverId, signedInUserId]);
-
+  
   // using this function to remove particular message on ui
   const handleDeleteMessage = (secondaryId: string) => {
     socket.emit('deleteMessage', {
       secondaryId: secondaryId,
     });
+    
+    deleteMessage(secondaryId);
+
     setAllChatMessages((prevChat) =>
       prevChat.filter((message) => message.secondaryId !== secondaryId)
     ); // Update chat state
@@ -120,7 +124,7 @@ export default function MessageContain({
                 />
               </div>
             </div>
-            <div className="chat-header mb-1 flex">
+            <div className="chat-header mb-1 flex items-center text-center justify-center">
               {/* <div className="m-1">
           {isSender ? session?.user.name : contact?.name}
         </div> */}
@@ -130,7 +134,8 @@ export default function MessageContain({
 
               {/* ON CLICK REMOVES THE MESSAGE FROM ARRAY TO SEEM LIKE REALTIME IN UI */}
               <div
-                className="ml-4 text-xs"
+                className="ml-4 text-xs rounded-full btn-ghost hover:bg-[#2f2c66] tooltip tooltip-right"
+                data-tip="Delete message"
                 onClick={() =>
                   handleDeleteMessage(
                     message.secondaryId ?? 'something went wrong'
@@ -138,18 +143,13 @@ export default function MessageContain({
                 }
               >
                 {session?.user?.id === message.senderId && (
-                  <DeleteButton
-                    messageId={message.id}
-                    secondaryId={message.secondaryId ?? ''}
-                    deleteMessage={deleteMessage}
-                    person={contact?.id ?? ''}
-                  />
+                  <Trash2 className="text-white w-4 h-4"/>
                 )}
               </div>
             </div>
 
             {/* Contains the messages */}
-            <div className="flex-column chat-bubble bg-[#020024]">
+            <div className="flex-column chat-bubble bg-[#14113d] md:bg-[#020024]">
               <p>{message.message}</p>
             </div>
           </div>
