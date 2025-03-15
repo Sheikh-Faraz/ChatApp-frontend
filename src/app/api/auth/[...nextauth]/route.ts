@@ -17,7 +17,7 @@ import { authOptions } from '@/lib/auth';
 //       clientSecret: env.GOOGLE_CLIENT_SECRET,
 //     }),
 //   ],
-//   callbacks: {
+//   callbacks: { 
 //     session({ session, user }) {
 //       session.user.id = user.id;
 //       return session;
