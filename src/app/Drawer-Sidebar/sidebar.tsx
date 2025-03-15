@@ -17,7 +17,7 @@ export default async function SideBar() {
     return null;
   }
   return (
-    <div className="sticky top-0 flex h-screen w-fit md:min-w-[17rem] flex-col border-r border-[#01001A] bg-[#020024]">
+    <div className="sticky top-0 flex h-full sm:h-screen w-fit md:min-w-[17rem] flex-col border-r border-[#01001A] bg-[#020024]">
       {/* Contains the information about the user signed in on top left corner*/}
       <div className="z-50 m-2 flex justify-center items-center rounded-lg bg-transparent md:bg-[#1a1036] text-center font-bold text-white md:w-fit md:m-3 md:p-3">
         <Image
