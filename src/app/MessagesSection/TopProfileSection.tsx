@@ -23,7 +23,9 @@ export default function TopProfileSection({
     if (!socket) {
       // Initialize the socket connection only once
       // socket = io('http://localhost:3000');
-      socket = io(process.env.NEXT_PUBLIC_SOCKET_URL as string);
+      socket = io(process.env.NEXT_PUBLIC_SOCKET_URL as string, {
+        transports: ["websocket", "polling"], // Ensure compatibility
+      });
       
 
       // Listen for updates to the list of online users

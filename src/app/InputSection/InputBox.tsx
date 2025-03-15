@@ -21,7 +21,9 @@ export default function InputBox({ receiverId, session }: InputBoxProps) {
 
   useEffect(() => {
     // const socket = io('http://localhost:3000');
-    const socket = io(process.env.NEXT_PUBLIC_SOCKET_URL as string);
+    const socket = io(process.env.NEXT_PUBLIC_SOCKET_URL as string, {
+      transports: ["websocket", "polling"], // Ensure compatibility
+    });
     
     setSocket(socket);
   }, []);
