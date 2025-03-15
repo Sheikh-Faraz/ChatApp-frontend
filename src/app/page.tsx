@@ -1,7 +1,7 @@
 import { MessageSquare } from "lucide-react";
 export default function Home() {
   return (
-    <div className="w-full flex flex-1 flex-col items-center justify-center p-16 bg-[#020024] h-full sm:h-screen">
+    <div className="w-full flex flex-1 flex-col items-center justify-center p-16 bg-[#020024] h-screen">
       <div className="max-w-md text-center space-y-6">
         {/* Icon Display */}
         <div className="flex justify-center gap-4 mb-4">
