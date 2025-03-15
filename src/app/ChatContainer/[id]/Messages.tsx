@@ -3,6 +3,8 @@ import Image from 'next/image';
 import { useRef, useEffect, useState } from 'react';
 import { deleteMessage } from '@/lib/actions/deleteMessage';
 import DeleteButton from '@/components/DeleteButton';
+import pic from '@/app/assets/profile-pic-placeholder.png';
+
 import { Trash2 } from 'lucide-react';
 // Using socket to get messages in instant
 import { io } from 'socket.io-client';
@@ -36,9 +38,6 @@ export default function MessageContain({
   const messagesEndRef = useRef<HTMLDivElement>(null);
   // Code for socketf
   const [socket, setSocket] = useState<any>(undefined);
-
-  const defaultImageUrl =
-    'https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp';
 
   useEffect(() => {
     //   Used to scroll to the new message in the end
@@ -116,8 +115,8 @@ export default function MessageContain({
                   alt="User's Avatar"
                   src={
                     isSender
-                      ? (session?.user.image ?? defaultImageUrl)
-                      : (contact?.image ?? defaultImageUrl)
+                      ? (session?.user.image ?? pic.src)
+                      : (contact?.image ?? pic.src)
                   }
                   width={20}
                   height={20}
